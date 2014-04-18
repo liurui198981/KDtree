@@ -40,22 +40,72 @@ public class KDtree3D<E extends Comparable<E>>
     {
       if (r == null)
       {
-        return new KDtree3D(point);
+        return point;
       }
       else if (point.x.ComparaTo(r.x) == 0)
       {
         System.out.println("System Error! The same value of root");
-        return root;
+        return r;
       }
       else if (point.x.ComparaTo(r.x) < 0)
       {
         level++;
-        r.left = add(point, r.left, level);
+        r.left = insert(point, r.left, level);
         return r;
       }
       else
       {
         level++;
-        r.right = add(point, r.right, level);
+        r.right = insert(point, r.right, level);
         return r;
       }
+    }
+    if (level == 1)
+    {
+      if (r == null)
+      {
+        return point;
+      }
+      else if (point.y.ComparaTo(r.y) == 0)
+      {
+        System.out.println("System Error! The same Value of root");
+        return r;
+      }
+      else if (point.y.ComparaTo(r.y) < 0)
+      {
+        level++;
+        r.left = insert(point, r.left, level);
+        return r;
+      }
+      else
+      {
+        level++;
+        r.right = insert(point, r.right, level);
+        return r;
+      }
+    }
+    if (level == 2)
+    {
+      if (r == null)
+      {
+        return point;
+      }
+      else if (point.z.ComparaTo(r.z) == 0)
+      {
+        System.out.println("System Error! The same Value of root");
+        return r;
+      }
+      else if (point.z.ComparaTo(r.z) < 0)
+      {
+        level = 0;
+        r.left = insert(point, r.left, level);
+        return r;
+      }
+      else
+      {
+        level = 0;
+        r.right = insert(point, r.right, level);
+        return r;
+      }
+    }
+      
