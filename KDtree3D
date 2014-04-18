@@ -30,3 +30,32 @@ public class KDtree3D<E extends Comparable<E>>
     this.root = root;
   }
   
+  public void insert(Point3D<E> point)
+  {
+    root = insert(point, root, 0)
+  }
+  private Point3D<E> insert(Point3D<E> point, Point<E> r,int level)
+  {
+    if (level == 0)
+    {
+      if (r == null)
+      {
+        return new KDtree3D(point);
+      }
+      else if (point.x.ComparaTo(r.x) == 0)
+      {
+        System.out.println("System Error! The same value of root");
+        return root;
+      }
+      else if (point.x.ComparaTo(r.x) < 0)
+      {
+        level++;
+        r.left = add(point, r.left, level);
+        return r;
+      }
+      else
+      {
+        level++;
+        r.right = add(point, r.right, level);
+        return r;
+      }
