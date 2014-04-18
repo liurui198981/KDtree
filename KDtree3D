@@ -111,6 +111,28 @@ public class KDtree3D<E extends Comparable<E>>
   }
   public void remove(Point3D point)
   {
-    root = remove(root, point);
+    root = remove(root, point, 0);
   }
-  private Point3D remove(Point3D root,Point3D point)
+  private Point3D remove(Point3D root,Point3D point,int level)
+  {
+    if (root == null)
+    {
+      System.out.println("ERROR! Empty Tree");
+      return root;
+    }
+    
+    if (level == 0)
+    {
+      int compResult = point.x.compareTo(root.x);
+      
+      if (compResult < 0)
+      {
+        root.left = remove(root.left, point,1);
+        return root;
+      }
+      else if (comResult > 0)
+      {
+        root.right = remove(root.right, point , 1);
+        return root;
+      }
+      if (comResult == null)
