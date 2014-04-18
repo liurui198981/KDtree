@@ -108,4 +108,9 @@ public class KDtree3D<E extends Comparable<E>>
         return r;
       }
     }
-      
+  }
+  public void remove(Point3D point)
+  {
+    root = remove(root, point);
+  }
+  private Point3D remove(Point3D root,Point3D point)
