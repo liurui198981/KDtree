@@ -1,3 +1,32 @@
-public class KDtree3D
+public class KDtree3D<E extends Comparable<E>>
 {
+  private class Point3D<E>
+  {
+    Point3D<E> left;
+    Point3D<E> right;
+    E x;
+    E y;
+    E z;
+    
+    public Point3D(E x,E y,E z)
+    {
+      this.x = x;
+      this.y = y;
+      this.z = z;
+      left = null;
+      right = null;
+    }
+  }
+  
+  private Point3D<E> root;
+  
+  public KDtree3D()
+  {
+    root = null;
+  }
+  
+  public KDtree3D(Point3D<E> root)
+  {
+    this.root = root;
+  }
   
